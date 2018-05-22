@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/javascript/game.js"></script>
+    <title>Pokémon</title>
+</head>
+
+<body>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .starterDoc {
+            text-align: center;
+            font-size: 45px;
+            text-shadow: 4px 4px 4px gold;
+            color: darkslateblue;
+            position: relative;
+            top: 60px;
+            font-family: "Avengeance Heroic Avenger";
+        }
+        .starter {
+            display: block;
+            position: relative;
+            top: 60px;
+            background: transparent;
+            border: none;
+            font-size: 25px;
+            color: white;
+            text-shadow: 4px 4px 4px black;
+        }
+        body {
+            background-image: url("./assets/images/pokeballLayout.jpg");
+            font-family: "Bebas Neue";
+            font-size: 20px;
+        }
+        .mainbox {
+            height: 400px;
+            background: white;
+            position: relative;
+            top: 40px;
+            background-image: url("./assets/images/starterLayout.png");
+            background-repeat: no-repeat;
+            background-size: 1110px 750px;
+            background-position: 50% 100%;
+        }
+        .starter:hover {
+            cursor: url("./assets/images/pokeball.gif"), auto;
+        }
+        #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+
+    <div class="container cursor">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="./assets/images/pokemon.png" id="logo">
+            </div>
+        </div>
+
+        <div class="container mainbox">
+            <div class="row">
+                <div class="col-sm-12 starterDoc">
+                    <a>Choose your starter Pokemon:</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <button id="pikachu" class="starter"><img src="./assets/images/pikachu.gif">Pikachu</button></div>
+                <div class="col-3">
+                    <button id="bulbasaur" class="starter"><img src="./assets/images/bulbasaur.gif">Bulbasaur</button></div>
+                <div class="col-3">
+                    <button id="charmander" class="starter"><img src="./assets/images/charmander.gif">Charmander</button></div>
+                <div class="col-3">
+                    <button id="squirtle" class="starter"><img src="./assets/images/squirtle.gif">Squirtle</button></div>       
+            </div> 
+        </div>
+    </div>
+
+
+
+    <script>
+    var confirmStarter;
+    var pikachu = $("#pikachu");
+    var bulbasaur = $("#bulbasaur");
+    var squirtle = $("#squirtle");
+    var charmander = $("#charmander");
+    var newAnchor = $("<a>");
+
+    function adventureStart() {
+            newAnchor = "A world of dreams and adventures await! Let's go!";
+            $(".starterDoc").text(newAnchor);
+    }
+
+        $(document).ready(function () {
+            pikachu.on("click", function () {
+                confirmStarter = confirm("Are you sure you want to pick Pikachu as your starter Pokémon?");
+                if (confirmStarter) {
+                    charmander.fadeOut();
+                    squirtle.fadeOut();
+                    bulbasaur.fadeOut();
+
+                    $("*").css("cursor", 'url(./assets/images/pikacursor.gif), auto');
+                    $(".mainbox").css("background-image", 'url("./assets/images/transition.gif")')
+                        .css("background-position", 'center')
+                        .css("background-size", '1110px 750px');
+                    pikachu.animate({left: '415px'});
+
+                    pikachu.off();
+                    adventureStart();
+                }
+            });
+            bulbasaur.on("click", function () {
+                confirmStarter = confirm("Are you sure you want to pick Bulbasaur as your starter Pokémon?");
+                if (confirmStarter) {
+                    pikachu.fadeOut();
+                    squirtle.fadeOut();
+                    charmander.fadeOut();
+
+                    $("*").css("cursor", 'url(./assets/images/bulbacursor.gif), auto');
+                    $(".mainbox").css("background-image", 'url("./assets/images/transition.gif")')
+                        .css("background-position", 'center')
+                        .css("background-size", '1110px 750px');
+                    bulbasaur.animate({left: '145px'});
+
+                    bulbasaur.off();
+                    adventureStart();
+                }
+            });
+            charmander.on("click", function () {
+                confirmStarter = confirm("Are you sure you want to pick Charmander as your starter Pokémon?");
+                if (confirmStarter) {
+                    pikachu.fadeOut();
+                    squirtle.fadeOut();
+                    bulbasaur.fadeOut();
+
+                    $("*").css("cursor", 'url(./assets/images/charcursor.gif), auto');
+                    $(".mainbox").css("background-image", 'url("./assets/images/transition.gif")')
+                        .css("background-position", 'center')
+                        .css("background-size", '1110px 750px');
+                    charmander.animate({right: '145px'});
+
+                    charmander.off();
+                    adventureStart();
+                }
+            });
+            squirtle.on("click", function () {
+                confirmStarter = confirm("Are you sure you want to pick Squirtle as your starter Pokémon?");
+                if (confirmStarter) {
+                    pikachu.fadeOut();
+                    charmander.fadeOut();
+                    bulbasaur.fadeOut();
+
+                    $("*").css("cursor", 'url(./assets/images/squirtcursor.gif), auto');
+                    $(".mainbox").css("background-image", 'url("./assets/images/transition.gif")')
+                        .css("background-position", 'center')
+                        .css("background-size", '1110px 750px');
+                    squirtle.animate({right: '415px'}, 'normal');
+
+                    squirtle.off();
+                    adventureStart();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
